@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Id;
 import java.util.List;
 
 @Service
@@ -25,5 +26,11 @@ public class UserServiceImp implements UserService {
    public List<User> listUsers() {
       return userDao.listUsers();
    }
+
+   @Transactional(readOnly = true)
+   public User getUserbyCarmodelandseries(String model, int series) {
+      return userDao.getUserbyCarmodelandseries(model, series);
+   }
+
 
 }
